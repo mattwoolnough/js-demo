@@ -8,6 +8,7 @@ app = angular.module 'store', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'templat
 # Config
 app.value 'siteName', 'Molkea'
 app.value 'publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE'
+app.value 'url', 'https://api.dev.molt.in/'
 
 # Set routes & page definitions
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
@@ -76,11 +77,12 @@ app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
 #############
 
 # Moltin class injection and authentication
-app.factory 'Moltin', ['$rootScope', '$location', 'publicKey', ($rootScope, $location, publicKey) ->
+app.factory 'Moltin', ['$rootScope', '$location', 'publicKey', 'url', ($rootScope, $location, publicKey, url) ->
 
 	# Start SDK
 	moltin = new Moltin
 		publicId: publicKey
+		url: url
 		notice: (type, msg, code) ->
 			if code == '404'
 				$rootScope.error = code

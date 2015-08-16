@@ -3,11 +3,12 @@
 #############
 
 # Moltin class injection and authentication
-app.factory 'Moltin', ['$rootScope', '$location', 'publicKey', ($rootScope, $location, publicKey) ->
+app.factory 'Moltin', ['$rootScope', '$location', 'publicKey', 'url', ($rootScope, $location, publicKey, url) ->
 
 	# Start SDK
 	moltin = new Moltin
 		publicId: publicKey
+		url: url
 		notice: (type, msg, code) ->
 			if code == '404'
 				$rootScope.error = code

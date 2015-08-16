@@ -6,6 +6,8 @@ app.value('siteName', 'Molkea');
 
 app.value('publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE');
 
+app.value('url', 'https://api.dev.molt.in/');
+
 app.config([
   '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -54,10 +56,11 @@ app.config([
 ]);
 
 app.factory('Moltin', [
-  '$rootScope', '$location', 'publicKey', function($rootScope, $location, publicKey) {
+  '$rootScope', '$location', 'publicKey', 'url', function($rootScope, $location, publicKey, url) {
     var moltin;
     moltin = new Moltin({
       publicId: publicKey,
+      url: url,
       notice: function(type, msg, code) {
         var data, e, k, p, v;
         if (code === '404') {

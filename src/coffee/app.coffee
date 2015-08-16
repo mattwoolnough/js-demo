@@ -8,6 +8,7 @@ app = angular.module 'store', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'templat
 # Config
 app.value 'siteName', 'Molkea'
 app.value 'publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE'
+app.value 'url', 'https://api.dev.molt.in/'
 
 # Set routes & page definitions
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
