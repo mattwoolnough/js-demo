@@ -71,15 +71,26 @@ module.exports = (grunt) ->
       files: ['src/coffee/*.coffee', 'src/coffee/pages/*.coffee', 'src/libs/*.js', 'src/css/*.css', 'src/html/*.html']
       tasks: ['coffee', 'karma', 'html2js', 'concat', 'uglify', 'cssmin']
 
+    connect:
+      server:
+        options:
+          port: 9001
+          base: 'dist'
+          open: true
+          debug: true
+          keepalive: true
+
+
   # These plugins provide necessary tasks
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-html2js'
   grunt.loadNpmTasks 'grunt-uncss'
   grunt.loadNpmTasks 'grunt-karma'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
   # Default task
-  grunt.registerTask 'default', ['coffee', 'karma', 'html2js', 'concat', 'uglify', 'cssmin']
+  grunt.registerTask 'default', ['coffee', 'karma', 'html2js', 'concat', 'uglify', 'cssmin', 'connect']
